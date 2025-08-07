@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Pixelmatic - Ajánlatkérés</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="icon" type="image/png" href="images/favicon.png" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+			<header id="header">
+				<div class="inner">
+					<a href="/" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+					<h1><strong>Pixelmatic</strong><br> Weboldalkészítés és karbantartás</h1>
+				</div>
+			</header>
+
+			<div id="main">
+
+					<section id="quote-form">
+						<header class="major">
+							<h2>Ajánlatkérés</h2>
+						</header>
+						<p>Kérlek, töltsd ki az alábbi űrlapot, hogy a lehető legpontosabb ajánlatot tudjam adni Neked.<br> Minél több részletet ismerek, annál jobban személyre szabott árat és megoldást tudok kínálni.</p>
+						
+						<form method="POST" action="email.php">
+                            <input type="text" name="website-url" style="display:none;">
+                            <input type="hidden" name="form_type" value="Ajánlatkérés">
+							
+							<input type="hidden" name="_subject" value="Új weboldal ajánlatkérés!">
+							<input type="hidden" name="_next" value="/koszonjuk"> <div class="row gtr-uniform">
+
+								<div class="col-6 col-12-xsmall">
+									<label for="name">Név</label>
+									<input type="text" name="name" id="name" placeholder="Vezetéknév Keresztnév" required />
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<label for="email">E-mail cím</label>
+									<input type="email" name="email" id="email" placeholder="nev@email.com" required />
+								</div>
+
+								<div class="col-12">
+									<label>Milyen típusú weboldalra van szükséged?</label>
+									<div class="row gtr-25">
+										<div class="col-4 col-12-small">
+											<input type="radio" id="type-landing" name="weboldal-tipusa" value="Landing oldal" checked>
+											<label for="type-landing">Landing oldal</label>
+										</div>
+										<div class="col-4 col-12-small">
+											<input type="radio" id="type-business" name="weboldal-tipusa" value="Céges / Bemutatkozó oldal">
+											<label for="type-business">Céges / Bemutatkozó</label>
+										</div>
+										<div class="col-4 col-12-small">
+											<input type="radio" id="type-portfolio" name="weboldal-tipusa" value="Webshop">
+											<label for="type-portfolio">Webshop</label>
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-12">
+									<label>Milyen funkciókat szeretnél?</label>
+									<div class="row gtr-25">
+										<div class="col-4 col-12-small">
+											<input type="checkbox" id="feature-blog" name="funkcio[]" value="Blog / Hírek">
+											<label for="feature-blog">Blog / Hírek</label>
+										</div>
+										<div class="col-4 col-12-small">
+											<input type="checkbox" id="feature-gallery" name="funkcio[]" value="Képgaléria">
+											<label for="feature-gallery">Képgaléria</label>
+										</div>
+										<div class="col-4 col-12-small">
+											<input type="checkbox" id="feature-seo" name="funkcio[]" value="Keresőoptimalizálás (SEO)">
+											<label for="feature-seo">Keresőoptimalizálás</label>
+										</div>
+										<div class="col-4 col-12-small">
+											<input type="checkbox" id="feature-contact" name="funkcio[]" value="Kapcsolati űrlap">
+											<label for="feature-contact">Kapcsolati űrlap</label>
+										</div>
+										<div class="col-4 col-12-small">
+											<input type="checkbox" id="feature-analytics" name="funkcio[]" value="Látogatói statisztika">
+											<label for="feature-analytics">Látogatói statisztika</label>
+										</div>
+										<div class="col-4 col-12-small">
+											<input type="checkbox" id="feature-multilang" name="funkcio[]" value="Többnyelvűség">
+											<label for="feature-multilang">Többnyelvűség</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-6 col-12-small">
+									<label for="page-count">Tervezett oldalak száma</label>
+									<select name="oldalszam" id="page-count">
+										<option value="1-3">1-3 oldal (pl. Főoldal, Rólunk, Kapcsolat)</option>
+										<option value="4-8">4-8 oldal</option>
+										<option value="9+">9+ oldal</option>
+										<option value="nem_tudom">Még nem tudom</option>
+									</select>
+								</div>
+								
+								<div class="col-6 col-12-small">
+									<label for="budget">Tervezett költségkeret</label>
+									<select name="koltsegkeret" id="budget">
+										<option value="">- Válassz -</option>
+										<option value="< 50 000 Ft">&lt; 50 000 Ft</option>
+										<option value="50 000 - 100 000 Ft">50 000 - 100 000 Ft</option>
+										<option value="100 000 - 200 000 Ft">100 000 - 200 000 Ft</option>
+										<option value="> 200 000 Ft">&gt; 200 000 Ft</option>
+									</select>
+								</div>
+								
+								<div class="col-12">
+									<label for="message">Projekt leírása, további igények</label>
+									<textarea name="message" id="message" placeholder="Írd le itt a projekted részleteit, esetleg linkelj hasonló oldalakat, amelyek tetszenek." rows="6"></textarea>
+								</div>
+
+								<div class="col-12">
+									<ul class="actions">
+										<li><input type="submit" value="Ajánlatkérés elküldése" class="primary"/></li>
+										<li><a href="https://pixelmatic.hu" class="button">Vissza a főoldalra</a></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+					</section>
+			</div>
+
+		<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/armand.roth0" class="icon brands fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://github.com/michaelvagyok11" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="mailto:roth.armand@pixelmatic.hu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>Pixelmatic &copy; 2025</li></li>
+					</ul>
+				</div>
+			</footer>
+
+		<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
