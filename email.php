@@ -1,31 +1,24 @@
 <?php
-// ===== BEÁLLÍTÁSOK =====
-$recipient_email = "roth.armand@pixelmatic.hu"; // Ide írd a saját e-mail címedet!
-// ========================
+$recipient_email = ""; // Ide írd a saját email címedet
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    // SPAM szűrés (Honeypot)
     if (!empty($_POST['website-url'])) {
         http_response_code(400);
         die("Spam detected.");
     }
 
-    // Adatok összegyűjtése és tisztítása
     $name = filter_var(trim($_POST["name"]), FILTER_SANITIZE_STRING);
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     
-    // Email cím validálása
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: hiba"); // Átirányítás a 'szép' URL-re
+        header("Location: hiba");
         exit;
     }
 
-    // Tárgy beállítása
     $form_type = isset($_POST['form_type']) ? $_POST['form_type'] : 'Ismeretlen Űrlap';
     $subject = "Pixelmatic.hu: " . $form_type;
 
-    // HTML E-mail törzsének összeállítása
     $email_body = '
     <html>
     <head>
@@ -42,22 +35,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <table>';
 
     foreach ($_POST as $key => $value) {
-        // A rejtett mezőket nem jelenítjük meg az e-mailben
         if ($key == 'website-url' || $key == 'form_type') {
             continue;
         }
 
-        // A kulcsot olvashatóbbá tesszük (pl. 'weboldal-tipusa' -> 'Weboldal tipusa')
         $label = ucfirst(str_replace('-', ' ', $key));
 
-        // Az értéket biztonságossá tesszük
         if (is_array($value)) {
-            // Ha a funkciókról van szó (tömb), akkor felsorolásként jelenítjük meg
             $field_value = implode('<br>', array_map(function($item) {
                 return htmlspecialchars($item, ENT_QUOTES, 'UTF-8');
             }, $value));
         } else {
-            // Sima szöveges érték
             $field_value = nl2br(htmlspecialchars($value, ENT_QUOTES, 'UTF-8'));
         }
         
@@ -66,13 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $email_body .= '</table></body></html>';
 
-    // HTML E-mail fejlécek
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
     $headers .= "From: Pixelmatic <noreply@pixelmatic.hu>\r\n";
     $headers .= "Reply-To: $name <$email>\r\n";
 
-    // E-mail küldése
     if (mail($recipient_email, $subject, $email_body, $headers)) {
         header("Location: koszonjuk");
     } else {
